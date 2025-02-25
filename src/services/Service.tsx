@@ -1,24 +1,24 @@
-﻿import axios from "axios"
+import axios from 'axios';
 
-export const api = axios.create({
-    baseURL: "https://farmacia-nest.onrender.com/swagger"
-  })
-  
-  export const listar = async(url: string, setDados: Function) => {
-    const resposta = await api.get(url)
-    setDados(resposta.data)
-  }
+const api = axios.create({
+  baseURL: 'https://farmacia-nest.onrender.com' // Certifique-se de que esta é a URL correta
+});
 
-  export const cadastrar = async(url: string, dados: Object, setDados: Function) => {
-    const resposta = await api.post(url, dados)
-    setDados(resposta.data)
-  }
-  
-  export const atualizar = async(url: string, dados: Object, setDados: Function) => {
-    const resposta = await api.put(url, dados)
-    setDados(resposta.data)
-  }
+export const listar = async (url: string, setDado: Function) => {
+  const resposta = await api.get(url);
+  setDado(resposta.data);
+};
 
-  export const deletar = async(url: string) => {
-    await api.delete(url)
-  }
+export const cadastrar = async (url: string, dados: any, setDado: Function) => {
+  const resposta = await api.post(url, dados);
+  setDado(resposta.data);
+};
+
+export const atualizar = async (url: string, dados: any, setDado: Function) => {
+  const resposta = await api.put(url, dados);
+  setDado(resposta.data);
+};
+
+export const deletar = async(url: string) => {
+  await api.delete(url)
+}
